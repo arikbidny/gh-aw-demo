@@ -9,8 +9,9 @@ engine: claude
 permissions:
   contents: read
   issues: read
+  pull-requests: read
 
-timeout_minutes: 5
+timeout-minutes: 5
 
 safe-outputs:
   add-comment:
@@ -20,7 +21,7 @@ safe-outputs:
 
 tools:
   github:
-    allowed: [get_issue, get_issue_comments, list_issues]
+    allowed: [issue_read, list_issues]
 ---
 
 # Triage incoming issues

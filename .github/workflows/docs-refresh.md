@@ -7,6 +7,8 @@ on:
 
 permissions:
   contents: read
+  issues: read
+  pull-requests: read
 
 engine: claude
 
@@ -15,7 +17,7 @@ network:
     - "api.github.com"
     - "raw.githubusercontent.com"
 
-timeout_minutes: 15
+timeout-minutes: 15
 
 tools:
   github:
