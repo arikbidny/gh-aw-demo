@@ -39,6 +39,7 @@ safe-outputs:
     labels: [documentation, automated, agentic]
     draft: true
     max: 1
+    allowed-files: ["README.md", "**/README.md"]
 ---
 
 # Docs Refresh Agent
