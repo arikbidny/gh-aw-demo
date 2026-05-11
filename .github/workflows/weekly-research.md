@@ -14,7 +14,7 @@ permissions: read-all               # Read-only across all scopes — writes hap
 
 network: defaults                   # Use gh-aw's default egress allow-list (GitHub API + common infra) plus web-fetch's domains.
 
-engine: claude                      # Use Anthropic Claude as the agent runtime (requires ANTHROPIC_API_KEY secret).
+engine: copilot                     # Use GitHub Copilot CLI as the agent runtime (requires COPILOT_GITHUB_TOKEN secret in GitHub Actions secrets).
 
 safe-outputs:                       # Validated GitHub side-effects. Agent emits intent; a separate permissioned job executes them.
   create-discussion:                # The single side-effect: open one Discussion with the research report.
