@@ -1,27 +1,27 @@
 ---
 on:
   issues:
-    types: [opened, reopened]
-  workflow_dispatch:
+    types: [opened, reopened]       # Fires on every new or reopened issue — this is the main trigger.
+  workflow_dispatch:                # Also allow manual runs (useful for testing / re-triaging).
 
-engine: claude
+engine: claude                      # Use Anthropic Claude as the agent runtime (requires ANTHROPIC_API_KEY secret).
 
 permissions:
-  contents: read
-  issues: read
-  pull-requests: read
+  contents: read                    # Read repo files (so the agent can reference src/ when explaining next steps).
+  issues: read                      # Read the triggering issue's title, body, and comments.
+  pull-requests: read               # Read existing PRs (used to spot duplicates / related work).
 
-timeout-minutes: 5
+timeout-minutes: 5                  # Hard cap — triage should be fast; kill the agent past 5 minutes.
 
-safe-outputs:
-  add-comment:
-  add-labels:
-    allowed: [bug, feature, question, documentation, needs-info, good-first-issue]
-    max: 3
+safe-outputs:                       # Validated side-effects. Agent emits intent; a separate permissioned job executes them.
+  add-comment:                      # Allow posting one comment on the triggering issue (defaults: target=triggering, max=1).
+  add-labels:                       # Allow adding labels to the triggering issue.
+    allowed: [bug, feature, question, documentation, needs-info, good-first-issue]   # Exclusive allow-list — any other label is rejected server-side.
+    max: 3                          # At most 3 labels per run (matches the prompt's "1–3 labels" instruction).
 
 tools:
-  github:
-    allowed: [issue_read, list_issues]
+  github:                           # GitHub MCP server — only the two read tools the triage agent needs.
+    allowed: [issue_read, list_issues]   # `issue_read` for full issue context; `list_issues` to spot duplicates.
 ---
 
 # Triage incoming issues
