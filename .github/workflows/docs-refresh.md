@@ -40,6 +40,10 @@ safe-outputs:
     draft: true
     max: 1
     allowed-files: ["README.md", "**/README.md"]
+    protected-files:
+      policy: blocked
+      exclude:
+        - README.md
 ---
 
 # Docs Refresh Agent
