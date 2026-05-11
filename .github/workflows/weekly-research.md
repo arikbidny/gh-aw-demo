@@ -12,7 +12,12 @@ on:
 
 permissions: read-all               # Read-only across all scopes — writes happen in the separate safe-output job (discussions:write minted there).
 
-network: defaults                   # Use gh-aw's default egress allow-list (GitHub API + common infra) plus web-fetch's domains.
+network:                            # Egress allow-list enforced by the firewall sandbox around the agent.
+  allowed:
+    - defaults                      # Include gh-aw's default allow-list (GitHub API + common infra + Copilot endpoints).
+    - "dev.to"                      # Allow scanning dev.to articles for industry trends.
+    - "hnrss.org"                   # Allow Hacker News RSS feeds for tech news.
+    - "news.ycombinator.com"        # Allow direct Hacker News scraping for trending discussions.
 
 engine: copilot                     # Use GitHub Copilot CLI as the agent runtime (requires COPILOT_GITHUB_TOKEN secret in GitHub Actions secrets).
 
