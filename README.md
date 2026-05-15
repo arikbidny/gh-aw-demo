@@ -8,6 +8,10 @@ A tiny Express API used to demo **GitHub Agentic Workflows** (`gh-aw`).
 - `tests/server.test.js` — basic Jest tests
 - `.github/workflows/issue-triage.md` — agentic workflow that triages new issues
 - `.github/workflows/pr-reviewer.md` — agentic workflow that reviews new PRs (built **live** during the workshop)
+- `.github/workflows/docs-refresh.md` — agentic workflow that keeps READMEs accurate and aligned with the code (runs every 2 days)
+- `.github/workflows/daily-repo-status.md` — agentic workflow that posts a daily repo status report as a GitHub issue
+- `.github/workflows/security-scan.md` — agentic workflow that scans pull requests for common security issues
+- `.github/workflows/weekly-research.md` — agentic workflow that posts a weekly industry research report as a GitHub Discussion
 
 ## Local
 
@@ -24,3 +28,5 @@ See [`/runbook/RUNBOOK.md`](../runbook/RUNBOOK.md) in the workshop kit.
 ## Credits
 
 Built on top of [GitHub Agentic Workflows](https://github.github.com/gh-aw/) by GitHub Next + Microsoft Research.
+
+_Last reviewed by docs-refresh agent on 2026-05-15._
